@@ -56,3 +56,7 @@
 
 ###时间复杂度总结表
 ![on](ArraySort.jpg)
+
+##Reference
+Blgo:http://bigocheatsheet.com/
+Book:《Algorithms 4th Edition》 By:Robert Sedgewich & Kevin Wayne
