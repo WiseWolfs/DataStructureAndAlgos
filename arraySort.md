@@ -58,5 +58,5 @@
 ![on](ArraySort.jpg)
 
 ##Reference
-Blgo:http://bigocheatsheet.com/
-Book:¡¶Algorithms 4th Edition¡· By:Robert Sedgewich & Kevin Wayne
+- Blgo:http://bigocheatsheet.com/
+- Book:¡¶Algorithms 4th Edition¡· By:Robert Sedgewich & Kevin Wayne
