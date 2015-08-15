@@ -21,13 +21,13 @@ public class BinaryTree {
 	/**
 	 * 前序遍历的非递归形式：
 	 * 思路：
-	 * 对于任一节点P，
-1）输出节点P，然后将其入栈，再看P的左孩子是否为空；
-2）若P的左孩子不为空，则置P的左孩子为当前节点，重复1）的操作；
-3）若P的左孩子为空，则将栈顶节点出栈，但不输出，并将出栈节点的右孩子置为当前节点，看其是否为空；
-4）若不为空，则循环至1）操作；
-5）如果为空，则继续出栈，但不输出，同时将出栈节点的右孩子置为当前节点，看其是否为空，重复4）和5）操作；
-6）直到当前节点P为NULL并且栈空，遍历结束。
+	 *对于任一节点P，
+	 *1）输出节点P，然后将其入栈，再看P的左孩子是否为空；
+	 *2）若P的左孩子不为空，则置P的左孩子为当前节点，重复1）的操作；
+	 *3）若P的左孩子为空，则将栈顶节点出栈，但不输出，并将出栈节点的右孩子置为当前节点，看其是否为空；
+	 *4）若不为空，则循环至1）操作；
+	 *5）如果为空，则继续出栈，但不输出，同时将出栈节点的右孩子置为当前节点，看其是否为空，重复4）和5）操作；
+	 *6）直到当前节点P为NULL并且栈空，遍历结束。
 	 * @param root
 	 */
 	void preOrder2(Node root){
@@ -41,7 +41,7 @@ public class BinaryTree {
 			}
 			if(!stack.isEmpty()){
 				n = stack.peek();
-				stack.push(n);
+				stack.pop();
 				n = n.right;
 			}
 		}
@@ -74,6 +74,40 @@ public class BinaryTree {
 			}
 		}
 	}
+	/**
+	 * 要保证根结点在左孩子和右孩子访问之后才能访问，因此对于任一结点P，先将其入栈。
+	 * 如果P不存在左孩子和右孩子，则可以直接访问它；或者P存在左孩子或者右孩子，
+	 * 但是其左孩子和右孩子都已被访问过了，则同样可以直接访问该结点。若非上述两种情况，
+	 * 则将P的右孩子和左孩子依次入栈，
+	 * 这样就保证了每次取栈顶元素的时候，左孩子在右孩子前面被访问，左孩子和右孩子都在根结点前面被访问。
+	 * @param root
+	 */
+	void postOrder3(Node root){
+		Stack<Node> stack = new Stack<>();
+		Node cur;//当前节点
+		Node prev = null;//前一次访问的节点
+		stack.push(root);
+		while(!stack.isEmpty()){
+			cur=stack.peek();
+			if((cur.left==null && cur.right==null)
+					|| (prev!=null && (prev==cur.left ||
+						prev==cur.right
+							)
+					)
+					){
+				System.out.print(cur.data+" ");
+				stack.pop();
+				prev=cur;
+			}else{
+				if(cur.right!=null){
+					stack.push(cur.right);
+				}
+				if(cur.left!=null){
+					stack.push(cur.left);
+				}
+			}
+		}
+	}
 	void BFS(Node root){
 		if(root==null)return ;
 		LinkedList<Node> list= new LinkedList<>();
@@ -88,6 +122,22 @@ public class BinaryTree {
 			if(n.right!=null){
 				print(n.right);
 				list.add(n.right);
+			}
+		}
+	}
+	void DFSWithStack(Node root){
+		if(root==null)
+			return ;
+		Stack<Node> stack = new Stack<>();
+		stack.push(root);
+		while(!stack.isEmpty()){
+			Node r = stack.pop();
+			System.out.print(r.data+" ");
+			if(r.right!=null){
+				stack.push(r.right);
+			}
+			if(r.left!=null){
+				stack.push(r.left);
 			}
 		}
 	}
