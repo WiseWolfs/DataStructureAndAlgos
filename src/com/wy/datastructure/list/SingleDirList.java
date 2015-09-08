@@ -9,8 +9,7 @@ package com.wy.datastructure.list;
 public class SingleDirList<T> {
 	Node<T> head;
 
-	public SingleDirList(Node<T> h) {
-		head = h;
+	public SingleDirList() {
 	}
 
 	void travel() {

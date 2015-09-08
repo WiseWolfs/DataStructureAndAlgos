@@ -12,7 +12,7 @@ import java.util.LinkedList;
  */
 public class RadixSort {
 	public static void main(String[] args) {
-		int array[]={3,5,9,6,130,20,30,10,44,0};
+		int array[]={1,1,1,3,5,6,7,9,12,89,13123,10};
 		new RadixSort().sort(array);
 		for(int a:array)
 			System.out.print(a+" ");

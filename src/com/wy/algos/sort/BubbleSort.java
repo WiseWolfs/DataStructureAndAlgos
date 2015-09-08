@@ -6,7 +6,7 @@ package com.wy.algos.sort;
  */
 public class BubbleSort {
 	public static void main(String[] args) {
-		int num[] = { 3, 1, 5, 4, 123, 55, 33, 123 };
+		int num[] = {7,3,5,4,1123,6,8,5};
 		new BubbleSort().sort(num);
 		for (int n : num) {
 			System.out.print(n + " ");

@@ -2,8 +2,8 @@ package com.wy.algos.sort;
 
 public class MergeSort {
 	public static void main(String[] args) {
-		int num[] = { 3, 1, 5, 4, 123, 55, 33, 123 };
-		new MergeSort().sort(num, 0, 7);
+		int num[] = {1,3,2,1,1,1,5,6,8,9,0};
+		new MergeSort().sort(num, 0, num.length-1);
 		for (int n : num) {
 			System.out.print(n + " ");
 		}
@@ -11,7 +11,7 @@ public class MergeSort {
 	void sort(int num[],int low,int high){
 		if(low<high){
 			int mid = low+(high-low)/2;
-			sort(num,low,mid);//TODO mid-1就不行了
+			sort(num,low,mid);
 			sort(num,mid+1,high);
 			merge(num,low,mid,high);
 		}
